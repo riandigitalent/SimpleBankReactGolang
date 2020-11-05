@@ -8,6 +8,7 @@ import userImg from "../../assets/user.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../transactions/style.scss"
 import { logout } from '../../actions/userActions';
+import {deposit,withdraw,transfer,saldo} from '../../actions/transactionActions'
 
 const Transactions = ({ history }) => {
   const dispatch = useDispatch();
@@ -16,8 +17,56 @@ const Transactions = ({ history }) => {
     dispatch(logout());
     history.push('/login');
   }
+
+  const userLogin= useSelector((state) => state.userLogin)
+  const {token} =userLogin
+
+  const [amountDeposit, setAmountDeposit] =  usestate("");
+  const [decsDeposit, setDecsDeposit] =  usestate("");
+  const [amountWithdraw, setAmountWithdraw] =  usestate("");
+  const [decsWithdraw, setDecsWithdraw] =  usestate("");
+  const [amountTransfer, setAmountTransfer] =  usestate("");
+  const [decsTransfer, setDecsTransfer] =  usestate("");
+
+useEffect(()=>{
+  setAmountDeposit("");
+  setAmountTransfer("");
+  setAmountWithdraw("");
+  setDecsDeposit("");
+  setDecsTransfer("");
+  setDecsWithdraw("");
+},[])
+
+useEffect(()=>{
+if(token){
+  dispatch(saldo())}
+},[dispatch, history,token])
+
+const transactionSaldo = useSelector((state)=> state.transactionSaldo)
+const {saldoTotal} = transactionSaldo
+const accountDeposit = saldoTotal?.account?.account_number
+const accountWithdraw = saldoTotal?.account?.account_number
+const accountTransferSender = saldoTotal?.account?.account_number
   
-  return (
+const submitDepositHandler = (e) => {
+  e.preventDefault();
+  dispatch(deposit(accountDeposit,amountDeposit,decsDeposit));
+  //dispatch(saldo)
+};
+const submitTransferHandler = (e) => {
+  e.preventDefault();
+  dispatch(transfer(accountTransfer,accountTransferSender,amountTransfer,decsTransfer);
+  //dispatch(saldo)
+};
+
+const submitWithdrawHandler = (e) => {
+  e.preventDefault();
+  dispatch(withdraw(accountWithdraw,amountWithdraw,decsWithdraw);
+  //dispatch(saldo)
+};
+
+
+return (
     <Container>
       <Tabs>
         <Navbar bg="light">
