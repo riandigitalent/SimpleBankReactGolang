@@ -11,8 +11,8 @@ const reducer = combineReducers({
     transactionWithdraw: transactionWithdrawReducer,
     transactionTransfer: transactionTransferReducer,
     transactionSaldo: transactionSaldoReducer,
-    userLogin: userLoginReducer,
-    userRegister: userRegisterReducer
+    //userLogin: userLoginReducer,
+    // userRegister: userRegisterReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('token') ? localStorage.getItem('token') : null;
