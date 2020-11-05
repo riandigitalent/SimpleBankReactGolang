@@ -55,13 +55,13 @@ const submitDepositHandler = (e) => {
 };
 const submitTransferHandler = (e) => {
   e.preventDefault();
-  dispatch(transfer(accountTransfer,accountTransferSender,amountTransfer,decsTransfer);
+  dispatch(transfer(accountTransfer,accountTransferSender,amountTransfer,decsTransfer));
   //dispatch(saldo)
 };
 
 const submitWithdrawHandler = (e) => {
   e.preventDefault();
-  dispatch(withdraw(accountWithdraw,amountWithdraw,decsWithdraw);
+  dispatch(withdraw(accountWithdraw,amountWithdraw,decsWithdraw));
   //dispatch(saldo)
 };
 
