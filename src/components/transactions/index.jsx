@@ -110,15 +110,21 @@ return (
           <div className="d-flex justify-content-center my-4">
             <h1>DEPOSIT</h1>
           </div>
-          <Form className="mt-3">
+          <div className="mb-5">
+            <h4>Total Saldo : {saldoTotal != null && saldoTotal.account ? saldoTotal.account.saldo : 0}</h4>
+          </div>
+          <Form onSubmit={submitDepositHandler} className="mt-3">
             <Form.Group as={Row} controlId="formPlaintextAmount">
               <Form.Label column sm="2">
                 Total Amount
               </Form.Label>
               <Col sm="10">
-                <Form.Control 
-                  type="amount" 
-                  placeholder="Input the amount" />
+              <Form.Control
+                  type="amount"
+                  placeholder="Input the amount"
+                  value={amountDeposit}
+                  onChange={(e) => setAmountDeposit(e.target.value)}
+                />
               </Col>
             </Form.Group>
             <Form.Group as={Row} controlId="exampleForm.ControlTextareaDesc">
@@ -126,9 +132,11 @@ return (
                 Description
               </Form.Label>
               <Col sm="10">
-                <Form.Control 
-                  as="textarea" 
-                  rows={3} 
+              <Form.Control
+                  as="textarea"
+                  rows={3}
+                  value={decsDeposit}
+                  onChange={(e) => setDecsDeposit(e.target.value)}
                 />
               </Col>
             </Form.Group>
@@ -143,15 +151,20 @@ return (
           <div className="d-flex justify-content-center my-4">
             <h1>WITHDRAWAL</h1>
           </div>
-          <Form className="mt-3">
+          <div className="mb-5">
+            <h4>Total Saldo : {saldoTotal != null && saldoTotal.account ? saldoTotal.account.saldo : 0}</h4>
+          </div>
+          <Form onSubmit={submitWithdrawHandler} className="mt-3">
             <Form.Group as={Row} controlId="formPlaintextAmountWithdraw">
               <Form.Label column sm="2">
                 Total Amount
               </Form.Label>
               <Col sm="10">
-                <Form.Control 
-                  type="amount" 
-                  placeholder="Input the amount" 
+              <Form.Control
+                  type="amount"
+                  placeholder="Input the amount"
+                  value={amountWithdrawal}
+                  onChange={(e) => setAmountWithdraw(e.target.value)}
                 />
               </Col>
             </Form.Group>
@@ -163,9 +176,11 @@ return (
                 Description
               </Form.Label>
               <Col sm="10">
-                <Form.Control 
-                  as="textarea" 
-                  rows={3} 
+              <Form.Control
+                  as="textarea"
+                  rows={3}
+                  value={decsWithdrawal}
+                  onChange={(e) => setDecsWithdraw(e.target.value)}
                 />
               </Col>
             </Form.Group>
@@ -180,7 +195,10 @@ return (
           <div className="d-flex justify-content-center my-4">
             <h1>TRANSFER</h1>
           </div>
-          <Form className="mt-3">
+          <div className="mb-5">
+            <h4>Total Saldo : {saldoTotal != null && saldoTotal.account ? saldoTotal.account.saldo : 0}</h4>
+          </div>
+          <Form onSubmit={submitTransferHandler} className="mt-3">
             <Form.Group as={Row} controlId="formPlaintextRecepient">
               <Form.Label column sm="2">
                 Recepient
@@ -189,6 +207,8 @@ return (
                 <Form.Control
                   type="account"
                   placeholder="Input the Recepient Account Number "
+                  value={accountTransfer}
+                  onChange={(e) => setAccountTransfer(e.target.value)}
                 />
               </Col>
             </Form.Group>
@@ -197,9 +217,11 @@ return (
                 Total Amount
               </Form.Label>
               <Col sm="10">
-                <Form.Control 
-                  type="amount" 
-                  placeholder="Input the amount" 
+              <Form.Control
+                  type="amount"
+                  placeholder="Input the amount"
+                  value={amountTransfer}
+                  onChange={(e) => setAmountTransfer(e.target.value)}
                 />
               </Col>
             </Form.Group>
@@ -211,10 +233,13 @@ return (
                 Description
               </Form.Label>
               <Col sm="10">
-                <Form.Control 
-                  as="textarea" 
-                  rows={3} 
-                  />
+              <Form.Control
+                  as="textarea"
+                  rows={3}
+                  value={decsTransfer}
+                  onChange={(e) => setDecsTransfer(e.target.value)}
+                />
+                
               </Col>
             </Form.Group>
             <Col sm={{ span: 10, offset: 11 }}>
